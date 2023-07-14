@@ -11,15 +11,15 @@ export const TextArea = styled.textarea`
 `;
 
 export const Container2 = styled.div`
-  background-color: whitesmoke;
-  border-radius: 12px;
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 30px;
-  display: flex;
-  gap: 20px;
-  width: 90%;
-  height: 300px;
+  height: 400px;
+  backgroundColor: white;
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow:
+          0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
 export const TitleContainer = styled.div`

@@ -9,6 +9,7 @@ import Home from "./layout/Home/Home";
 import RecipeListPage from "./pages/RecipeListPage/RecipeListPage";
 import RecipeRankingPage from "./pages/RecipeRankingPage/RecipeRankingPage";
 import Mypage from "./pages/Mypage/Mypage";
+import Write from "./pages/Write/Write";
 
 const queryClient: QueryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App: FC = () => {
                         <Route path="/RecipeList" element={<RecipeListPage />} />
                         <Route path="/RecipeRanking" element={<RecipeRankingPage />} />
                         <Route path="/Mypage" element={<Mypage />} />
+                        <Route path="/Write" element={<Write />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
