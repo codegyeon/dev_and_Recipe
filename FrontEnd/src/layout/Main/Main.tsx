@@ -7,7 +7,6 @@ import {
 Root,Footer
 } from "./style";
 
-
 const Main = () => {
     return (
         <Root>

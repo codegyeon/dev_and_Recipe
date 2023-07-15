@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const useArrayInput = (initialValue: string[]): [string[], (e: React.ChangeEvent<HTMLInputElement>, index: number) => void] => {
+const useArrayInput = (initialValue: string[]): [string[], (e: React.ChangeEvent<HTMLInputElement>, index: number) => void, (newValue: string[]) => void] => {
     const [value, setValue] = useState(initialValue);
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
@@ -8,8 +8,7 @@ const useArrayInput = (initialValue: string[]): [string[], (e: React.ChangeEvent
         newArr[index] = e.target.value;
         setValue(newArr);
     };
-
-    return [value, onChange];
+    return [value, onChange ,setValue];
 }
 
 export default useArrayInput

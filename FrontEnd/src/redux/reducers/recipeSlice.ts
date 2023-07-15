@@ -1,8 +1,8 @@
 import {PayloadAction, createSlice} from "@reduxjs/toolkit";
 
 export interface Recipe {
-    _id: string;
-    id: string;
+    _id?: string;
+    id?: string;
     subtitle: string;
     category1: string;
     category2: string;
@@ -13,10 +13,10 @@ export interface Recipe {
     content: string;
     tip: string;
     url: string;
-    writerEmail: string;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
+    writerEmail?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    __v?: number;
 }
 
 export interface RecipesState {

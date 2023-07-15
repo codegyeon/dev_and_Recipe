@@ -7,9 +7,12 @@ import WriteContainer2 from "./Components/WriteContainer2";
 import WriteContainer3 from "./Components/WriteContainer3";
 import WriteContainer4 from "./Components/WriteContainer4";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {ADD_RECIPE} from "../../redux/reducers/recipeSlice";
 
 const Write = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [title, onChangeTitle] = useInput<string | undefined>("");
     const [subtitle, onChangeSubtitle] = useInput<string | undefined>("");
     const [url, onChangeUrl] = useInput<string | undefined>("");
@@ -18,22 +21,11 @@ const Write = () => {
     const [category3, onChangeCategory3] = useInput<number | undefined>(1);
     const [category4, onChangeCategory4] = useInput<number | undefined>(1);
     const [ingredients, onChangeIngredients] = useArrayInput(["", "", "", "", "", "", "", "", "", "", "", ""]);
+    const [contentArr, onChangeContentArr, setContentArr] = useArrayInput(["",]);
     const [content, onChangeContent] = useInput<string | undefined>("");
     const [tip, onChangeTip] = useInput<string | undefined>("");
     const [file, setFile] = useState<File | null>(null);
     const [preview, setPreview] = useState<string>(null);
-
-    const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files.length > 0) {
-            const selectedFile = e.target.files[0];
-            setFile(selectedFile);
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setPreview(reader.result as string);
-            };
-            reader.readAsDataURL(selectedFile);
-        }
-    };
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -49,9 +41,27 @@ const Write = () => {
         formData.append('content', content || '');
         formData.append('tip', tip || '');
         formData.append('url', url || '');
+
+        const newRecipe = {
+            title,subtitle,category1,category2,category3,category4,content,tip,url,ingredients
+        }
+        dispatch(ADD_RECIPE(newRecipe))
         alert("성공적으로 등록 되었습니다!")
         navigate("/")
     };
+
+    const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files.length > 0) {
+            const selectedFile = e.target.files[0];
+            setFile(selectedFile);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreview(reader.result as string);
+            };
+            reader.readAsDataURL(selectedFile);
+        }
+    };
+
     return (
         <>
             <div>

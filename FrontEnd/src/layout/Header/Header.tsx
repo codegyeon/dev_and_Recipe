@@ -1,8 +1,5 @@
 import {
     Container,
-
-    ProfilePicture,
-    ProfilePicture2,
     SearchContainer,
     NavContainer,
     SearchInput,
@@ -13,15 +10,10 @@ import {useCallback} from "react";
 import useInput from "../../hooks/useInput";
 import {FaSearch} from "react-icons/fa";
 import {Image} from "react-bootstrap"
-import Logo from "../../../public/Logo.png"
-import {Link, useNavigate} from "react-router-dom";
+import Logo from "../../public/Logo.png"
+import {Link} from "react-router-dom";
 
-interface HeaderProps {
-    title: string | null;
-    stack: string | null;
-}
-
-const Header = ({title, stack}: HeaderProps) => {
+const Header = () => {
     const submitSearch = useCallback((e) => {
         e.preventDefault();
         setKeyword('')
@@ -40,24 +32,24 @@ const Header = ({title, stack}: HeaderProps) => {
                     </SearchButton>
                 </SearchForm>
                 <Link to={'/Write'}>
-                    <Image src="https://recipe1.ezmember.co.kr/img/tmn_write.png" roundedCirclev/>
+                    <Image src="https://recipe1.ezmember.co.kr/img/tmn_write.png" roundedCircle/>
                 </Link>
             </SearchContainer>
             <NavContainer>
-                <Link style={{margin: "auto"}} to="/">
-                    <a style={{fontWeight: "bold", padding: "10px"}}>MAIN</a>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/">
+                    MAIN
                 </Link>
-                <Link style={{margin: "auto"}} to="/RecipeList">
-                    <a style={{fontWeight: "bold", padding: "10px"}}>RECIPE LIST</a>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/RecipeList">
+                    RECIPE LIST
                 </Link>
-                <Link style={{margin: "auto"}} to="/RecipeRanking">
-                    <a style={{fontWeight: "bold", padding: "10px"}}>RECIPE RANKING</a>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/RecipeRanking">
+                    RECIPE RANKING
                 </Link>
-                <Link style={{margin: "auto"}} to="/Mypage">
-                    <a style={{fontWeight: "bold", padding: "10px"}}>MYPAGE</a>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/Mypage">
+                    MYPAGE
                 </Link>
-                <Link style={{margin: "auto"}} to="/Login">
-                    <a style={{fontWeight: "bold", padding: "10px"}}>LOGIN/LOGOUT</a>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/Login">
+                    LOGIN/LOGOUT
                 </Link>
             </NavContainer>
         </Container>

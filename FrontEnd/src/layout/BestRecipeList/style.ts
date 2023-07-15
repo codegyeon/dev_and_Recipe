@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const LayOut = styled.div`
-  height:400px;
+  height:500px;
   backgroundColor: gray;
   margin: 20px;
   box-shadow:
