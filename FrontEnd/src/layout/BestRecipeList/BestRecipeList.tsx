@@ -1,47 +1,24 @@
 import React from 'react';
 import {Carousel} from "react-bootstrap";
+import {LayOut} from "./style";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
 const BestRecipeList = () => {
     return (
-        <div
-            id="maincontent"
-            style={{
-                height:"300px",
-                backgroundColor: "white",
-                margin: "20px",
-                padding:"20px"
-            }}
+        <LayOut
         >
-            <h3>코딩너무재밌어 님의 BEST요리모음</h3>
+            <h3>코딩너무재밌어`s BEST Recipe</h3>
             <Carousel>
                 <Carousel.Item>
                     <div style={{display:"flex"}}>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                     </div>
                     <Carousel.Caption>
@@ -50,31 +27,13 @@ const BestRecipeList = () => {
                 <Carousel.Item>
                     <div style={{display:"flex"}}>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                     </div>
                     <Carousel.Caption>
@@ -83,38 +42,20 @@ const BestRecipeList = () => {
                 <Carousel.Item>
                     <div style={{display:"flex"}}>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                         <div style={{width: "33.33%"}}>
-                            <img
-                                className="d-block"
-                                src="https://img.freepik.com/free-photo/assortment-of-vegetables-herbs-and-spices-on-black-background-top-view-copy-space_123827-21707.jpg"
-                                alt="First slide"
-                                style={{height:"200px"}}
-                            />
-                            <h4>어쩌구 저쩌구</h4>
+                            <RecipeCard />
                         </div>
                     </div>
                     <Carousel.Caption>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-        </div>
+        </LayOut>
     );
 };
 

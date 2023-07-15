@@ -13,7 +13,6 @@ const Home = () => {
             <BestRecipeList/>
             <ProduceUserList/>
             <RecentlyRecipe/>
-            <RecipeCategory/>
             <SuggestRecipeList/>
         </>
     );

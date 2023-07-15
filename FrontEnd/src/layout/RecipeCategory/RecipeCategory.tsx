@@ -1,18 +1,12 @@
 import React from 'react';
 import {Carousel} from "react-bootstrap";
+import {LayOut} from "./style";
 
 const RecipeCategory = () => {
     return (
-        <div
-            id="maincontent"
-            style={{
-                height:"300px",
-                backgroundColor: "white",
-                margin: "20px",
-                padding:"20px"
-            }}
+        <LayOut
         >
-            <h3>레시피 카테고리</h3>
+            <h3>Category</h3>
             <Carousel>
                 <Carousel.Item>
                     <div style={{display:"flex"}}>
@@ -114,7 +108,7 @@ const RecipeCategory = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-        </div>
+        </LayOut>
     );
 };
 

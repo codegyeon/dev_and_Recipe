@@ -43,7 +43,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loginUser: (state: UserState, action: PayloadAction<UserResponse>) => {
+    LOGIN_USER: (state: UserState, action: PayloadAction<UserResponse>) => {
       state.user.email = action.payload.userResponse.email;
       state.user.nickName = action.payload.userResponse.nickName;
       state.user.profileContent = action.payload.userResponse.profileContent;
@@ -52,26 +52,7 @@ const userSlice = createSlice({
       localStorage.setItem(LocalStorageKey.Token, action.payload.token);
       state.user.isLogged = true;
     },
-    authUser: (state: UserState, action: PayloadAction<UserResponse>) => {
-      state.user.email = action.payload.userResponse.email;
-      state.user.nickName = action.payload.userResponse.nickName;
-      state.user.profileContent = action.payload.userResponse.profileContent;
-      state.user.imageUrl = action.payload.userResponse.profileUrl;
-      state.user.isLogged = true;
-    },
-    getProfileImage: (state: UserState, action: PayloadAction<string>) => {
-      state.user.imageUrl = action.payload;
-    },
-    unauthUser: (state: UserState) => {
-      state.user.email = null;
-      state.user.isLogged = false;
-      state.user.profileContent = null;
-      state.user.imageUrl = null;
-      state.user.nickName = null;
-      state.user.token = undefined;
-      localStorage.removeItem(LocalStorageKey.Token);
-    },
-    logOutUser: (state: UserState) => {
+    LOGOUT_USER: (state: UserState) => {
       state.user.email = null;
       state.user.token = null;
       state.user.isLogged = false;
@@ -80,10 +61,29 @@ const userSlice = createSlice({
       state.user.nickName = null;
       localStorage.removeItem(LocalStorageKey.Token);
     },
+    LOAD_PROFILE_IMAGE: (state: UserState, action: PayloadAction<string>) => {
+      state.user.imageUrl = action.payload;
+    },
+    AUTH_USER: (state: UserState, action: PayloadAction<UserResponse>) => {
+      state.user.email = action.payload.userResponse.email;
+      state.user.nickName = action.payload.userResponse.nickName;
+      state.user.profileContent = action.payload.userResponse.profileContent;
+      state.user.imageUrl = action.payload.userResponse.profileUrl;
+      state.user.isLogged = true;
+    },
+    UNAUTH_USER: (state: UserState) => {
+      state.user.email = null;
+      state.user.isLogged = false;
+      state.user.profileContent = null;
+      state.user.imageUrl = null;
+      state.user.nickName = null;
+      state.user.token = undefined;
+      localStorage.removeItem(LocalStorageKey.Token);
+    },
   },
 });
 
-export const { loginUser, logOutUser, authUser, unauthUser, getProfileImage } =
+export const { LOGIN_USER, LOGOUT_USER, AUTH_USER, UNAUTH_USER, LOAD_PROFILE_IMAGE } =
   userSlice.actions;
 
 export default userSlice.reducer;

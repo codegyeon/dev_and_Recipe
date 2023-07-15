@@ -4,8 +4,8 @@ import React, { FormEvent, useCallback, useEffect } from "react";
 import {
   UserResponse,
   UserState,
-  authUser,
-  loginUser,
+  AUTH_USER,
+  LOGIN_USER,
 } from "../../redux/reducers/userSlice";
 import { getAuthToken, userLogin } from "../../api/user";
 import { FaGoogle } from "react-icons/fa6";
@@ -33,7 +33,7 @@ const Login = () => {
   const { mutate: login_Mutate, isSuccess } = useMutation(userLogin, {
     onSuccess: (data: UserResponse) => {
       queryClient.invalidateQueries("user");
-      dispatch(loginUser(data));
+      dispatch(LOGIN_USER(data));
     },
     onError: (error: AxiosError) => {
       setComfirmMessage(String(error?.response?.data));
@@ -60,7 +60,7 @@ const Login = () => {
 
   useEffect(() => {
     if (tokenSuccess) {
-      dispatch(authUser(userData as unknown as UserResponse));
+      dispatch(AUTH_USER(userData as unknown as UserResponse));
     } else if (tokenError || user.token === undefined) {
       navigate("/Login");
     }
@@ -100,7 +100,7 @@ const Login = () => {
             <LoginButton onClick={goSignUp}>Sign Up</LoginButton>
           </LoginContainer>
           <Form onSubmit={handleSubmit}>
-            <h1>The TodoList</h1>
+            <h1>#Dev && Recipe</h1>
             <div>
               <SocialContainer>
                 <a

@@ -9,6 +9,7 @@ import Home from "./layout/Home/Home";
 import RecipeListPage from "./pages/RecipeListPage/RecipeListPage";
 import RecipeRankingPage from "./pages/RecipeRankingPage/RecipeRankingPage";
 import Mypage from "./pages/Mypage/Mypage";
+import Write from "./pages/Write/Write";
 
 const queryClient: QueryClient = new QueryClient();
 
@@ -21,10 +22,13 @@ const App: FC = () => {
                     <Route path="/SignUp" element={<SignUp />} />
                     <Route path="/" element={<Main />}>
                         <Route index element={<Home />} /> {/* "Home" 컴포넌트는 메인 페이지에 해당하는 컴포넌트를 의미합니다. */}
-                        {/*<Route path=":id" element={<Detail />} />*/}
+                        <Route path="/Detail" element={<Detail />} />
                         <Route path="/RecipeList" element={<RecipeListPage />} />
                         <Route path="/RecipeRanking" element={<RecipeRankingPage />} />
                         <Route path="/Mypage" element={<Mypage />} />
+                        <Route path="/Write" element={<Write />} />
+                        <Route path="/Login" element={<Login />} />
+                        <Route path="/SignUp" element={<SignUp />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

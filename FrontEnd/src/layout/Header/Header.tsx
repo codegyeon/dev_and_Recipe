@@ -1,9 +1,5 @@
 import {
-  Container,
-  Logo,
-  Logo2,
-  ProfilePicture,
-  ProfilePicture2,
+    Container,
     SearchContainer,
     NavContainer,
     SearchInput,
@@ -13,38 +9,51 @@ import {
 import {useCallback} from "react";
 import useInput from "../../hooks/useInput";
 import {FaSearch} from "react-icons/fa";
+import {Image} from "react-bootstrap"
+import Logo from "../../public/Logo.png"
+import {Link} from "react-router-dom";
 
-interface HeaderProps {
-  title: string | null;
-  stack: string | null;
-}
-
-const Header = ({ title, stack }: HeaderProps) => {
-  const submitSearch = useCallback((e)=>{
-    e.preventDefault();
-
-    setKeyword('')
-  },[])
-  const [keyword,onKeyword,setKeyword] = useInput('')
-  return (
-    <Container>
-      <SearchContainer>
-        <SearchForm onSubmit={submitSearch}>
-          <SearchInput value={keyword} onChange={onKeyword} />
-          <SearchButton>
-            <FaSearch />
-          </SearchButton>
-        </SearchForm>
-      </SearchContainer>
-      <NavContainer>
-        <a href="/">메인메뉴</a>
-        <a href="/RecipeList">레시피 보기</a>
-        <a href="/RecipeRanking">레시피 랭킹</a>
-        <a href="/Mypage">마이페이지</a>
-        <a href="#">로그인/로그아웃</a>
-      </NavContainer>
-    </Container>
-  );
+const Header = () => {
+    const submitSearch = useCallback((e) => {
+        e.preventDefault();
+        setKeyword('')
+    }, [])
+    const [keyword, onKeyword, setKeyword] = useInput('')
+    return (
+        <Container>
+            <SearchContainer>
+                <a href="/">
+                    <Image src={Logo} style={{width: "200px"}}/>
+                </a>
+                <SearchForm onSubmit={submitSearch}>
+                    <SearchInput value={keyword} onChange={onKeyword}/>
+                    <SearchButton>
+                        <FaSearch/>
+                    </SearchButton>
+                </SearchForm>
+                <Link to={'/Write'}>
+                    <Image src="https://recipe1.ezmember.co.kr/img/tmn_write.png" roundedCircle/>
+                </Link>
+            </SearchContainer>
+            <NavContainer>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/">
+                    MAIN
+                </Link>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/RecipeList">
+                    RECIPE LIST
+                </Link>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/RecipeRanking">
+                    RECIPE RANKING
+                </Link>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/Mypage">
+                    MYPAGE
+                </Link>
+                <Link style={{margin: "auto", fontWeight: "bold", padding: "10px"}} to="/Login">
+                    LOGIN/LOGOUT
+                </Link>
+            </NavContainer>
+        </Container>
+    );
 };
 
 export default Header;

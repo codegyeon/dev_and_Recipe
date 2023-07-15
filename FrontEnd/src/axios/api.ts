@@ -1,5 +1,5 @@
 import axios from "axios";
-import {unauthUser} from "../redux/reducers/userSlice";
+import {UNAUTH_USER} from "../redux/reducers/userSlice";
 import store from "../redux/config/configStore";
 
 const instance = axios.create({
@@ -21,13 +21,13 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use((response) => {
   if (response.status === 501) {
     console.log('토큰이 존재하지 않습니다')
-    store.dispatch(unauthUser());
+    store.dispatch(UNAUTH_USER());
   }
   return response;
 }, (error) => {
   if (error.response && (error.response.status === 501)) {
     console.log('토큰이 존재하지 않습니다')
-    store.dispatch(unauthUser());
+    store.dispatch(UNAUTH_USER());
   }
   return Promise.reject(error);
 });
@@ -46,7 +46,7 @@ instance.interceptors.response.use((response) => {
       return instance(originalRequest);
     } catch (err) {
         console.log('리프레시토큰이 만료되었습니다.')
-        store.dispatch(unauthUser());
+        store.dispatch(UNAUTH_USER());
       return Promise.reject(err);
     }
   }

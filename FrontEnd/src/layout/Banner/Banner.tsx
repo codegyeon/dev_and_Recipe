@@ -1,16 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from "react-bootstrap";
+import {LayOut} from "./style";
 
 const Banner = () => {
     return (
-        <div
-            id="banner"
-            style={{
-                height:"200px",
-                backgroundColor: "gray",
-                margin: "20px",
-            }}
+        <LayOut
         >
             <Carousel>
                 <Carousel.Item>
@@ -44,7 +39,7 @@ const Banner = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-        </div>
+        </LayOut>
     );
 };
 
