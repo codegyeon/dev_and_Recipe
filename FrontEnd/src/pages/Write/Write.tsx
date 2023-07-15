@@ -1,28 +1,15 @@
-import React, {useCallback, useState} from 'react';
-import {
-    Container2,
-    DoneContainer,
-    ButtonContainer,
-    TitleContainer, TextArea
-} from "./style";
-import CustomButton from "../../components/CustomButton/CustomButton";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
+import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import useInput from "../../hooks/useInput";
 import useArrayInput from "../../hooks/useArrayInput";
-import CategoryBox from "./Components/CategoryBox";
-import UploadImageBox from "./Components/UploadImageBox";
 import WriteContainer1 from "./Components/WriteContainer1";
 import WriteContainer2 from "./Components/WriteContainer2";
 import WriteContainer3 from "./Components/WriteContainer3";
 import WriteContainer4 from "./Components/WriteContainer4";
-
+import {useNavigate} from "react-router-dom";
 
 const Write = () => {
+    const navigate = useNavigate()
     const [title, onChangeTitle] = useInput<string | undefined>("");
     const [subtitle, onChangeSubtitle] = useInput<string | undefined>("");
     const [url, onChangeUrl] = useInput<string | undefined>("");
@@ -33,23 +20,37 @@ const Write = () => {
     const [ingredients, onChangeIngredients] = useArrayInput(["", "", "", "", "", "", "", "", "", "", "", ""]);
     const [content, onChangeContent] = useInput<string | undefined>("");
     const [tip, onChangeTip] = useInput<string | undefined>("");
-    const [file, setFile] = useState(null);
-    const [preview, setPreview] = useState(null);
+    const [file, setFile] = useState<File | null>(null);
+    const [preview, setPreview] = useState<string>(null);
 
-    const onFileChange = (e) => {
-        setFile(e.target.files[0]);
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setPreview(reader.result);
-        };
-        if (e.target.files[0]) reader.readAsDataURL(e.target.files[0]);
+    const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files.length > 0) {
+            const selectedFile = e.target.files[0];
+            setFile(selectedFile);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreview(reader.result as string);
+            };
+            reader.readAsDataURL(selectedFile);
+        }
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(title, subtitle, url, category1, category2, category3, category4, ingredients, content, tip)
         const formData = new FormData();
-        formData.append('image', file);
+        formData.append('image', file||'');
+        formData.append('title', title || '');
+        formData.append('subtitle', subtitle || '');
+        formData.append('category1', String(category1));
+        formData.append('category2', String(category2));
+        formData.append('category3', String(category3));
+        formData.append('category4', String(category4));
+        formData.append('ingredients', JSON.stringify(ingredients));
+        formData.append('content', content || '');
+        formData.append('tip', tip || '');
+        formData.append('url', url || '');
+        alert("성공적으로 등록 되었습니다!")
+        navigate("/")
     };
     return (
         <>
