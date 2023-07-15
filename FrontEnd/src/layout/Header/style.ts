@@ -19,27 +19,29 @@ export const Container = styled.div`
   weight: 100%;
   grid-template-rows: 70% 30%;
   height: 150px;
+  
 `;
 
 export const SearchContainer = styled.div`
-  background-color: white;
+  background-color: ghostwhite;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; // 가운데 정렬 유지
   padding: 0.5em;
+  width: 58%;
+  margin: auto;
 `;
 
 export const SearchInput = styled.input`
-  width: 85%;
+  width: 40%;
   padding: 0.5em;
   font-size: 1em;
 `;
 
 export const SearchForm = styled.form`
   display: flex;
-  justify-content: space-between;
-  width: 20%;
+  width: 50%;
 `;
 
 export const SearchButton = styled.button`
@@ -47,16 +49,16 @@ export const SearchButton = styled.button`
   font-size: 1em;
   border: 1px solid;
   background: none;
-  background-color: greenyellow;
+  background-color: whitesmoke;
   justify-content: flex-end;
 `;
 
 export const NavContainer = styled.div`
-  background-color: darkseagreen;
+  background-color: black;
   height: 100%;
   padding: 0 15%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   a{
     text-decoration: none;

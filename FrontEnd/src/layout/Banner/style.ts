@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 
 export const LayOut = styled.div`
-  margin: 0 auto;
-  max-width: 1200px;
-  min-width: 800px;
+  height:200px;
+  backgroundColor: gray;
+  margin: 20px;
+  box-shadow:
 `;

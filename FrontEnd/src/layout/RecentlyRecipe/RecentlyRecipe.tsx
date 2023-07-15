@@ -1,18 +1,12 @@
 import React from 'react';
 import {Carousel} from "react-bootstrap";
+import {LayOut} from "./style";
 
 const RecentlyRecipe = () => {
     return (
-        <div
-            id="maincontent"
-            style={{
-                height:"300px",
-                backgroundColor: "white",
-                margin: "20px",
-                padding:"20px"
-            }}
+        <LayOut
         >
-            <h3>베스트 레시피</h3>
+            <h3>Recently Recipe</h3>
             <Carousel>
                 <Carousel.Item>
                     <div style={{display:"flex"}}>
@@ -114,7 +108,7 @@ const RecentlyRecipe = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-        </div>
+        </LayOut>
     );
 };
 

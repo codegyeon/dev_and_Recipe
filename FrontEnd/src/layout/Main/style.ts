@@ -45,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     margin: 0;
     box-sizing: content-box!important;
-    background-color: floralwhite;
+    background-color: ghostwhite;
   }
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
@@ -65,6 +65,16 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const Container = styled.div`
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  max-width: 100%;
+`;
+
 export const Parent = styled.div`
   height: 100vh;
   display: flex;
@@ -75,11 +85,14 @@ export const Parent = styled.div`
 export const MainContainer = styled.div`
   flex: 2 0 auto; /* flex-grow: 2, flex-shrink: 0, flex-basis: auto */
   align-content: center;
-  background-color: floralwhite;
+  background-color: ghostwhite;
   height: auto;
   width: 60%;
   gap: 20px;
-  margin: 0 auto;
+  margin: 20px auto;
+  box-shadow:
+          0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
 export const TotalContainer = styled.div`
@@ -114,7 +127,7 @@ export const Footer = styled.div`
   margin: 0;
   display: flex;
   justify-content: space-between;
-  background: #e0e6eb;
+  background: lightgray;
   color: #333;
   font-weight: 600;
   flex-shrink: 0;

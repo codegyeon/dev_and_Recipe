@@ -1,18 +1,12 @@
 import React from 'react';
 import {Carousel} from "react-bootstrap";
+import {LayOut} from "./style";
 
 const BestRecipeList = () => {
     return (
-        <div
-            id="maincontent"
-            style={{
-                height:"300px",
-                backgroundColor: "white",
-                margin: "20px",
-                padding:"20px"
-            }}
+        <LayOut
         >
-            <h3>코딩너무재밌어 님의 BEST요리모음</h3>
+            <h3>코딩너무재밌어`s BEST Recipe</h3>
             <Carousel>
                 <Carousel.Item>
                     <div style={{display:"flex"}}>
@@ -114,7 +108,7 @@ const BestRecipeList = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-        </div>
+        </LayOut>
     );
 };
 

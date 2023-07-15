@@ -12,136 +12,58 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import useInput from "../../hooks/useInput";
+import useArrayInput from "../../hooks/useArrayInput";
+import CategoryBox from "./Components/CategoryBox";
+import UploadImageBox from "./Components/UploadImageBox";
+import WriteContainer1 from "./Components/WriteContainer1";
+import WriteContainer2 from "./Components/WriteContainer2";
+import WriteContainer3 from "./Components/WriteContainer3";
+import WriteContainer4 from "./Components/WriteContainer4";
 
 
 const Write = () => {
-    const [content, setContent] = useState<string | undefined>("");
-    const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setContent(e.target.value);
-    };
-    const update_Todo = useCallback(() => {
+    const [title, onChangeTitle] = useInput<string | undefined>("");
+    const [subtitle, onChangeSubtitle] = useInput<string | undefined>("");
+    const [url, onChangeUrl] = useInput<string | undefined>("");
+    const [category1, onChangeCategory1] = useInput<number | undefined>(1);
+    const [category2, onChangeCategory2] = useInput<number | undefined>(1);
+    const [category3, onChangeCategory3] = useInput<number | undefined>(1);
+    const [category4, onChangeCategory4] = useInput<number | undefined>(1);
+    const [ingredients, onChangeIngredients] = useArrayInput(["", "", "", "", "", "", "", "", "", "", "", ""]);
+    const [content, onChangeContent] = useInput<string | undefined>("");
+    const [tip, onChangeTip] = useInput<string | undefined>("");
+    const [file, setFile] = useState(null);
+    const [preview, setPreview] = useState(null);
 
-    }, [content]);
+    const onFileChange = (e) => {
+        setFile(e.target.files[0]);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreview(reader.result);
+        };
+        if (e.target.files[0]) reader.readAsDataURL(e.target.files[0]);
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(title, subtitle, url, category1, category2, category3, category4, ingredients, content, tip)
+        const formData = new FormData();
+        formData.append('image', file);
+    };
     return (
         <>
             <div>
                 <h2>레시피 등록</h2>
             </div>
-            <Form>
-            <Container2>
-                    <Row className="mb-3">
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label>레시피 제목</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" style={{width: "600px"}}/>
-                        </Form.Group>
-                    </Row>
-                    <Form.Group className="mb-3" controlId="formGridAddress1">
-                        <Form.Label>요리소개</Form.Label>
-                        <Form.Control placeholder="1234 Main St" style={{width: "600px"}}/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formGridAddress2">
-                        <Form.Label>동영상 URL 주소</Form.Label>
-                        <Form.Control placeholder="Apartment, studio, or floor" style={{width: "600px"}}/>
-                    </Form.Group>
-                    <Row className="mb-3 g-0 m-0">
-                        <Form.Group as={Col} controlId="formGridState" className="text-start ">
-                            <Form.Label>종류</Form.Label>
-                            <Form.Select defaultValue="Choose..." style={{width: "160px"}}>
-                                <option>Choose...</option>
-                                <option>...</option>
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridState" className="text-start">
-                            <Form.Label>상황</Form.Label>
-                            <Form.Select defaultValue="Choose..." style={{width: "160px"}}>
-                                <option>Choose...</option>
-                                <option>...</option>
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridState" className="text-start">
-                            <Form.Label>방법</Form.Label>
-                            <Form.Select defaultValue="Choose..." style={{width: "160px"}}>
-                                <option>Choose...</option>
-                                <option>...</option>
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridState" className="text-start">
-                            <Form.Label>재료</Form.Label>
-                            <Form.Select defaultValue="Choose..." style={{width: "160px"}}>
-                                <option>Choose...</option>
-                                <option>...</option>
-                            </Form.Select>
-                        </Form.Group>
-                    </Row>
-
-            </Container2>
-                <Container2
-                    id="maincontent"
-                    style={{
-                        height: "300px",
-                        backgroundColor: "white",
-                        margin: "20px",
-                        padding: "20px"
-                    }}
-                >
-
-                    <Row className="mb-3">
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label>재료목록</Form.Label>
-                            <Form.Control type="email" placeholder="재료1" style={{width: "250px"}}/>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료2" style={{width: "250px"}}/>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료3" style={{width: "250px"}}/>
-                        </Form.Group>
-                    </Row>
-                    <Row className="mb-3">
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료4" style={{width: "250px"}}/>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료5" style={{width: "250px"}}/>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료6" style={{width: "250px"}}/>
-                        </Form.Group>
-                    </Row>
-                    <Row className="mb-3">
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료7" style={{width: "250px"}}/>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료8" style={{width: "250px"}}/>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료9" style={{width: "250px"}}/>
-                        </Form.Group>
-                    </Row>
-                    <Row className="mb-3">
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료10" style={{width: "250px"}}/>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료11" style={{width: "250px"}}/>
-                        </Form.Group>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="email" placeholder="재료12" style={{width: "250px"}}/>
-                        </Form.Group>
-                    </Row>
-                </Container2>
+            <Form onSubmit={onSubmit}>
+                <WriteContainer1 preview={preview} onFileChange={onFileChange} onChangeCategory1={onChangeCategory1}
+                                 onChangeCategory2={onChangeCategory2} onChangeCategory3={onChangeCategory3}
+                                 onChangeCategory4={onChangeCategory4} onChangeSubtitle={onChangeSubtitle}
+                                 onChangeTitle={onChangeTitle} onChangeUrl={onChangeUrl}/>
+                <WriteContainer2 ingredients={ingredients} onChangeIngredients={onChangeIngredients}/>
+                <WriteContainer3 onChangeContent={onChangeContent}/>
+                <WriteContainer4 onChangeTip={onChangeTip}/>
             </Form>
         </>
     );

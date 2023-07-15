@@ -1,18 +1,11 @@
 import React from 'react';
 import {Carousel} from "react-bootstrap";
+import {LayOut} from "./style";
 
 const ProduceUserList = () => {
     return (
-        <div
-            id="maincontent"
-            style={{
-                height:"300px",
-                backgroundColor: "white",
-                margin: "20px",
-                padding:"20px"
-            }}
-        >
-            <h3>유저 리스트</h3>
+        <LayOut>
+            <h3>Editor`s Pick BestUser</h3>
             <Carousel>
                 <Carousel.Item>
                     <div style={{display:"flex"}}>
@@ -114,7 +107,7 @@ const ProduceUserList = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-        </div>
+        </LayOut>
     );
 };
 

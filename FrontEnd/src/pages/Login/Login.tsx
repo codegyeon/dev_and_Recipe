@@ -100,7 +100,7 @@ const Login = () => {
             <LoginButton onClick={goSignUp}>Sign Up</LoginButton>
           </LoginContainer>
           <Form onSubmit={handleSubmit}>
-            <h1>The TodoList</h1>
+            <h1>#Dev && Recipe</h1>
             <div>
               <SocialContainer>
                 <a
